@@ -4,14 +4,13 @@ namespace builder
 {
     public interface ITripBuilder
     {
-        void Reset();
-        void SetDestination(string destination);
-        void SetPrice();
-        void SetDifficulty();
-        void SetDurationHours();
-        void SetMaxParticipants();
-        void SetDescription();
-        void SetSalesContext();
-        Trip GetTrip();
+        ITripBuilder SetDestination(string destination);
+        ITripBuilder SetPrice(int price);
+        ITripBuilder SetDifficulty(int difficulty);
+        ITripBuilder SetDurationHours(int hours);
+        ITripBuilder SetMaxParticipants(int maxParticipants);
+        ITripBuilder SetDescription();
+        ITripBuilder SetSalesContext();
+        Trip Build();
     }
 }

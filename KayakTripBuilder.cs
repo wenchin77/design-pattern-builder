@@ -3,49 +3,48 @@ namespace builder
     public class KayakTripBuilder : ITripBuilder
     {
         private Trip _trip;
-        private int _price = 1500;
-        private int _difficulty = 2;
-        private int _durationHours = 4;
-        private int _maxParticipants = 20;
         private string _description = "獨木舟是一種用單根樹幹挖成的划艇，需要藉助槳驅動。獨木舟的優點在於由一根樹幹製成，製作簡單，不易有漏水，散架的風險。它可以說是人類最古老的水域交通工具之一。";
-        private string _note = "獨木舟振興券優惠套餐 開跑囉";
+        private string _salesContext = "獨木舟振興券優惠套餐 開跑囉";
         public KayakTripBuilder()
-        {
-            Reset();
-        }
-        public void Reset()
         {
             _trip = new Trip();
         }
-        public void SetDestination(string destination)
+        public ITripBuilder SetDestination(string destination)
         {
-            _trip.AddDetail($"地點: {destination}");
+            _trip.SetDestination(destination);
+            return this;
         }
-        public void SetPrice()
+        public ITripBuilder SetPrice(int price)
         {
-            _trip.AddDetail($"每人價格: NTD {_price}");
+            _trip.SetPrice(price);
+            return this;
         }
-        public void SetDifficulty()
+        public ITripBuilder SetDifficulty(int difficulty)
         {
-            _trip.AddDetail($"困難度: {_difficulty}/5");
+            _trip.SetDifficulty(difficulty);
+            return this;
         }
-        public void SetDurationHours()
+        public ITripBuilder SetDurationHours(int hours)
         {
-            _trip.AddDetail($"時間: {_durationHours}");
+            _trip.SetDurationHours(hours);
+            return this;
         }
-        public void SetMaxParticipants()
+        public ITripBuilder SetMaxParticipants(int maxParticipants)
         {
-            _trip.AddDetail($"每團人數限制: {_maxParticipants} 人");
+            _trip.SetMaxParticipants(maxParticipants);
+            return this;
         }
-        public void SetDescription()
+        public ITripBuilder SetDescription()
         {
-            _trip.AddDetail($"SUP 活動敘述: {_description}");
+            _trip.SetDescription(_description);
+            return this;
         }
-        public void SetSalesContext()
+        public ITripBuilder SetSalesContext()
         {
-            _trip.AddDetail($"【{_note}】");
+            _trip.SetSalesContext(_salesContext);
+            return this;
         }
-        public Trip GetTrip()
+        public Trip Build()
         {
             return _trip;
         }
